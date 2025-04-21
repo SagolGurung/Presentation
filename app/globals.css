@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.5% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@font-face {
+  font-family: "GenshinFont";
+  src: url("/fonts/genshin.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-genshin {
+  font-family: "GenshinFont", serif;
+  letter-spacing: 0.03em;
+}
+
+.bg-genshin-bg {
+  background-image: url("/placeholder.svg?height=1080&width=1920&text=Genshin+Background");
+  background-color: #0a1428;
+}
+
+.bg-genshin-header {
+  background-color: rgba(10, 20, 40, 0.8);
+}
+
+.bg-genshin-card {
+  background-color: rgba(20, 30, 50, 0.7);
+}
+
+.bg-genshin-dark {
+  background-color: rgba(10, 15, 30, 0.9);
+}
+
+.text-genshin-gold {
+  color: #f5d78e;
+}
+
+.text-genshin-text {
+  color: #e8e5d5;
+}
+
+.text-genshin-accent {
+  color: #7fb2f0;
+}
+
+.border-genshin-gold {
+  border-color: #f5d78e;
+}
+
+.bg-genshin-gold {
+  background-color: #f5d78e;
+}
+
+.bg-genshin-gold-hover {
+  background-color: #e6c87f;
+}
+
+.bg-genshin-button {
+  background-color: rgba(20, 30, 50, 0.7);
+}
+
+.bg-genshin-button-hover {
+  background-color: rgba(30, 40, 60, 0.8);
+}
+
+.bg-genshin-progress-bg {
+  background-color: rgba(20, 30, 50, 0.5);
+}
+
+.text-genshin-dark {
+  color: #0a1428;
+}
+
+.genshin-frame {
+  border: 1px solid rgba(245, 215, 142, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(245, 215, 142, 0.2);
+  background-color: rgba(10, 20, 40, 0.6);
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(245, 215, 142, 0.3);
+}
+
+.genshin-content {
+  background-image: url("/placeholder.svg?height=100&width=100&text=Genshin+Pattern");
+  background-repeat: repeat;
+  background-size: 100px;
+  background-blend-mode: overlay;
+  background-color: rgba(10, 20, 40, 0.1);
+}
+
+.genshin-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.genshin-title-container {
+  position: relative;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: rgba(10, 20, 40, 0.4);
+  border: 1px solid rgba(245, 215, 142, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+.genshin-title-container::before,
+.genshin-title-container::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(245, 215, 142, 0.5);
+}
+
+.genshin-title-container::before {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.genshin-title-container::after {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}

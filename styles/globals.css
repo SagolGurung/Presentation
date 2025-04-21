@@ -1,0 +1,127 @@
+/*────────────────────────────────────────
+  Tailwind layers
+─────────────────────────────────────────*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basic font fallback */
+body { font-family: Arial, Helvetica, sans-serif; }
+
+/* Utility: smooth multi‑line rag */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}
+
+/*────────────────────────────────────────
+  THEME TOKENS  (unchanged from before)
+─────────────────────────────────────────*/
+@layer base {
+  :root {
+    /* your long variable list … */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    /* … (all previous vars stay) … */
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    /* dark‑mode versions … (unchanged) */
+  }
+}
+
+@layer base {
+  *   { @apply border-border; }
+  body{ @apply bg-background text-foreground; }
+}
+
+/*────────────────────────────────────────
+  PRESENTATION PALETTE  (Slide 1 + 2)
+─────────────────────────────────────────*/
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;600&display=swap');
+
+:root{
+  --slide-bg   : #0e0f14;
+  --slide-gold : #e9c46a;
+  --slide-text : #d1d4db;
+
+  --slide-blue : #4ea8de;
+  --slide-green: #22c55e;
+  --slide-red  : #ef4444;
+}
+.dark{
+  --slide-bg   : #0d0e12;
+  /* keep accents identical for good contrast */
+}
+
+.font-genshin { font-family: "Merriweather Sans", sans-serif; }
+
+/* Generic helpers */
+.text-slide-gold  { color: var(--slide-gold);  }
+.text-slide-text  { color: var(--slide-text);  }
+.drop-shadow-gold { filter: drop-shadow(0 0 6px rgba(233,196,106,.45)); }
+
+/*─────────  Slide layout wrappers ─────────*/
+.genshin-content{
+  @apply relative overflow-hidden
+         bg-[color:var(--slide-bg)]
+         text-[color:var(--slide-text)];
+}
+
+.slide-bg::after{ /* dark gradient overlay */
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(to bottom,transparent 10%,rgba(14,15,20,.65) 60%);
+  pointer-events:none;
+}
+
+/*─────────  Icon halo (slide 1) ─────────*/
+.genshin-icon-container{
+  @apply relative flex items-center justify-center
+         h-20 w-20 md:h-24 md:w-24 rounded-full
+         bg-[color:var(--slide-bg)]/60 backdrop-blur
+         ring-1 ring-[color:var(--slide-gold)]/30
+         transition-transform duration-200 hover:-translate-y-1;
+}
+.icon-halo{
+  @apply absolute inset-0 rounded-full
+         bg-[color:var(--slide-gold)]/30 blur-xl pointer-events-none;
+}
+
+/*─────────  Bullet rows (slide 2) ─────────*/
+.bullet-row{
+  @apply flex gap-4 items-start text-balance;
+}
+.bullet-icon{
+  @apply flex-shrink-0 mt-1 h-6 w-6;
+}
+.bullet-blue  { color: var(--slide-blue);  }
+.bullet-green { color: var(--slide-green); }
+.bullet-red   { color: var(--slide-red);   }
+
+/* hint */
+.next-hint{
+  @apply text-xs md:text-sm tracking-wide text-[color:var(--slide-text)]/60;
+}
+
+/* globals.css — append anywhere */
+
+.halo {
+  position: relative;
+}
+
+/* animated glow behind the word */
+.halo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.2rem;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(8px);
+  opacity: 0.7;
+  animation: haloPulse 2.4s ease-in-out infinite alternate;
+  z-index: -1;              /* sits behind the text */
+}
+
+@keyframes haloPulse {
+  from { transform: scale(1);   opacity: 0.5; }
+  to   { transform: scale(1.2); opacity: 0.9; }
+}
